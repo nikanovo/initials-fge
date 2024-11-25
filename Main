@@ -13,11 +13,11 @@ public class Main {
             }
         }
 
-        System.out.println("Введите дату рождения (дд.мм.гггг или дд/мм/гггг):");
+        System.out.println("введите дату рождения (дд.мм.гггг или дд/мм/гггг):");
         String birthDateInput = scanner.nextLine();
         Person person = new Person(fullName, birthDateInput);
         if (person.calculateAge() < 0) {
-            throw new Exception("Дата рождения не может быть больше сегодняшнего дня");
+            throw new Exception("дата рождения не может быть больше сегодняшнего дня");
         }
 
         System.out.println(person);
