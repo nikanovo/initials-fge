@@ -17,7 +17,6 @@ public class Person {
     }
 
     private LocalDate getBirthDate(String date) {
-        // поддерживает 2 формата
         DateTimeFormatter dotesFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         DateTimeFormatter slashFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
@@ -38,7 +37,6 @@ public class Person {
         int age = today.getYear() - birthDate.getYear();
 
         // проверка: исполнилось ли уже в этом году?
-        // например: 07.12.2005 --> 18 лет (в декабре исполнится), 07.10.2005 --> 19 лет
         if (today.getDayOfYear() < birthDate.getDayOfYear()) {
             age--;
         }
@@ -58,13 +56,13 @@ public class Person {
         }
     }
 
-    // метод для получения инициалов
+    // получениt инициалов
     public String getInitials() {
         String initials = firstName.split("")[0] + "." + patronymic.split("")[0] + ".";
         return lastName + " " + initials;
     }
 
-    // грамматически верное окончание для возраста: лет\год\года
+    // окончание для возраста
     public String correctAgeWord() {
         int age = calculateAge();
         String ending = "";
