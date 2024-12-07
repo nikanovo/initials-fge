@@ -1,0 +1,20 @@
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class Company {
+    public static void parseAndPrintCompanies(String jsonResponse) {
+        JSONArray companiesArray = new JSONArray(jsonResponse);
+        if (companiesArray.length() == 0) {
+            System.out.println("No companies found.");
+            return;
+        }
+
+        for (int i = 0; i < companiesArray.length(); i++) {
+            JSONObject company = companiesArray.getJSONObject(i);
+            System.out.println("Company " + (i + 1) + ":");
+            System.out.println("Name: " + company.getString("name"));
+            System.out.println("Industry: " + company.optString("industry", "N/A"));
+            System.out.println();
+        }
+    }
+}
