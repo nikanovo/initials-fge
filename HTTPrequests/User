@@ -1,0 +1,21 @@
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class User {
+    public static void parseAndPrintUsers(String jsonResponse) {
+        JSONArray usersArray = new JSONArray(jsonResponse);
+        if (usersArray.length() == 0) {
+            System.out.println("No users found.");
+            return;
+        }
+
+        for (int i = 0; i < usersArray.length(); i++) {
+            JSONObject user = usersArray.getJSONObject(i);
+            System.out.println("User " + (i + 1) + ":");
+            System.out.println("Name: " + user.getString("name"));
+            System.out.println("Email: " + user.getString("email"));
+            System.out.println("Company: " + user.getJSONObject("company").getString("name"));
+            System.out.println();
+        }
+    }
+}

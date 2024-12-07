@@ -1,6 +1,0 @@
-public class ResponseProcessing {
-    public void handleResponse(String response) {
-        // Обработка ответа от API
-        System.out.println("Ответ от " + response);
-    }
-}
