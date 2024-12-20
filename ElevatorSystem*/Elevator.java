@@ -31,3 +31,29 @@ public class Elevator implements Runnable {
         
         moveToFloor(request.getFromFloor());
         log("Elevator " + id + " picked up a passenger on the floor " + request.getFromFloor());
+        moveToFloor(request.getToFloor());
+        log("Elevator " + id + " dropped off a passenger on the floor " + request.getToFloor());
+
+        currentWeight -= request.getPassengerWeight(); // Убираем вес пассажира после высадки
+    }
+
+    private void moveToFloor(int floor) {
+        while (currentFloor != floor) {
+            if (currentFloor < floor) {
+                currentFloor++;
+            } else {
+                currentFloor--;
+            }
+            log("Elevator " + id + " moves to the floor " + currentFloor);
+            try {
+                Thread.sleep(500); // Simulate time to move between floors
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+    private void log(String message) {
+        System.out.println("Elevator " + id + ": " + message);
+    }
+}
